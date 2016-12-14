@@ -4,12 +4,14 @@ from sqlalchemy.ext.declarative import declarative_base
 
 Base = declarative_base()
 
-class Content(Base):
-	__tablename__ = 'content'
+class Blog(Base):
+	__tablename__ = 'blog'
 	
 	title = Column(String(), primary_key=True)
+	subtitle = Column(String())
+	description = Column(String())
 	content = Column(String())
-	time = Column(Integer())
+	time = Column(Integer(), primary_key=True)
 
 engine = create_engine('mysql+mysqlconnector://root:@10.9.155.162:3306/blog')
 DBSession = sessionmaker(bind=engine)
